@@ -1,0 +1,17 @@
+version: '2'
+
+services:
+  python:
+    build: .
+    volumes:
+      - ./:/var/www/app:rw
+    working_dir: /var/www/app
+    links:
+      - mysql:database
+    command: bash -c "python setup.py install && pipenv install --system && python app.py"
+
+  mysql:
+    image: mysql:5.7
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: phone_calls

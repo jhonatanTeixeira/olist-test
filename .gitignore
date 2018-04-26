@@ -1,0 +1,6 @@
+venv
+Olist_test_api.egg-info
+build
+dist
+*/**/__pycache__
+__pycache__
