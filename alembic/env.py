@@ -3,7 +3,7 @@ from alembic import context
 from sqlalchemy import engine_from_config, pool
 from logging.config import fileConfig
 from domain.model import Base
-from infrasctructure.repository import engine
+from infrasctructure.repository import db
 
 # this is the Alembic Config object, which provides
 # access to the values within the .ini file in use.
@@ -52,7 +52,7 @@ def run_migrations_online():
     and associate a connection with the context.
 
     """
-    connectable = engine
+    connectable = db.engine
 
     with connectable.connect() as connection:
         context.configure(
