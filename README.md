@@ -35,6 +35,16 @@ $ alembic upgrade head
 ```
 Note: the project itself is configured to run on mysql, that can be changed on the infrastructure/repository.py
 
+### Docker
+It's also possible to run this app on a docker container wich is configured using docker-compose. It will run on development mode
+```
+# docker-compose up -d
+```
+after instalation, run migrations:
+```
+# docker-compose exec python alembic upgrade head
+```
+
 ## Controversial design decisions
 I have decided to not use the type field because it seemed more performatic to use only one table for the two endpoints,
 besides the fact that having two diferent endpoints was enough for the app know what was being posted, and made it easier
