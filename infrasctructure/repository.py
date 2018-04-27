@@ -5,7 +5,7 @@ from sqlalchemy import create_engine, text
 from domain.model import PhoneCallStart, Base
 
 connection_string = os.getenv('DATABASE_URL', 'mysql://root:root@database/phone_calls')
-engine = create_engine('mysql://root:root@database/phone_calls', echo=True)
+engine = create_engine(connection_string, echo=True)
 Base.metadata.bind = engine
 
 Session = sessionmaker(bind = engine)
