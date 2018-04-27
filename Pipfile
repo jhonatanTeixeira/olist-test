@@ -11,6 +11,7 @@ alembic = "*"
 configparser = "*"
 mysqlclient = "*"
 gunicorn = "*"
+flask-sqlalchemy = "*"
 
 [dev-packages]
 

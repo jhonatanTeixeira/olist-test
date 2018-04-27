@@ -1,4 +1,3 @@
-from flask import Flask
 from flask_restplus import Api, Resource, fields
 from domain.model import PhoneCallStart
 import infrasctructure.repository as repository
@@ -6,7 +5,7 @@ from dateutil import parser
 from sqlalchemy.orm.exc import NoResultFound
 
 
-app = Flask(__name__)
+app = repository.app
 api = Api(app, version='0.1', title='Phone call registry api',
           description='Track down phone calls and coomputes billing data')
 
@@ -52,8 +51,8 @@ class PhoneCallStartApi(Resource):
         except AssertionError as error:
             return error.args, 400
 
-        repository.session.add(phone_call)
-        repository.session.commit()
+        repository.db.session.add(phone_call)
+        repository.db.session.commit()
 
         return phone_call, 201
 
@@ -76,7 +75,7 @@ class PhoneCallEndApi(Resource):
         phone_call_start.end_timestamp = parser.parse(data["end_timestamp"]).replace(tzinfo=None)
 
         # repository.session.add(phone_call_start)
-        repository.session.commit()
+        repository.db.session.commit()
 
         return phone_call_start
 
