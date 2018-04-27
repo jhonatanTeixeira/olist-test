@@ -10,6 +10,7 @@ flask-restplus = "*"
 alembic = "*"
 configparser = "*"
 mysqlclient = "*"
+gunicorn = "*"
 
 [dev-packages]
 
